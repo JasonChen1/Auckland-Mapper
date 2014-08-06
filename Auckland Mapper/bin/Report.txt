@@ -1,0 +1,29 @@
+/* Code for COMP261 Assignment2
+ * Name:difu chen
+ * Usercode:chendifu
+ * ID:300252166
+
+ */
+
+I done core and completion
+
+In the roadGraph class i have a aStartSearch method which finds the routes and the redraw method which draws the routes.
+in the method first i set all the nodes to not visited then i create a PriorityQueue which contains the object which contains
+start nodes, the goal node the cost of the current node to its neighbour and the estimate cost from the start node to the
+goal node(the cost of the start node to the goal node as a straight line). If the queue is not empty it will poll the value 
+of the queue first then check it and see if its visited if not set it to visited and set the pathfrom variable to that node
+if the node is equal to goal then exit else go through its neighbor if the neighbor is not visited then set it to visited 
+then calculate the cost from the node to its neighbor and the total cost then add to the queue.
+
+I have a artPoint method which finds the articulation points of the map and highlight it with a different colour.
+in the method first i set all the node's depth to infinity and create a empty set, then i set the start node's depth and the 
+number of subtree to 0 then i go through each neighbour of the start node and check the depth of the neighbours if its infinity
+then i call the recursive method which takes the current node depth and the from node to account in the recursive method it first 
+set the node's depth and the reachBack's depth to the depth that the artPoint method past in  the it go through each neighbour 
+of that node other than fromNode and check it if the neighbour's depth is less than infinity if it true then find the 
+min(neighbour.depth, reachBack), else call the method itself and past in (neighbour,depth+1,node) and store it to a variable childReach
+after this then set the reachBack to min(childReach,reachBack) if childReach>= depth then add to the set and return it.
+after returning it, it go back to the artPoint method and increment the number of subtree's count and check that if the 
+number of subtree is >1 then add the start node to the set
+
+I test the program by check the drawing of the shortest path and the drawing of the articulation point
